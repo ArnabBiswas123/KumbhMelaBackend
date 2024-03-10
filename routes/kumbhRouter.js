@@ -9,6 +9,11 @@ const getMetaTags=require('../controllers/AboutKumbh/getMetaTags')
 const deleteAboutMeta=require('../controllers/AboutKumbh/deleteMetaTag')
 const editMetatag=require('../controllers/AboutKumbh/editMetatag')
 const getallAbout=require('../controllers/AboutKumbh/getallAbout')
+const createPackage=require('../controllers/KumbhPackages/createPackage')
+const getallpackage=require('../controllers/KumbhPackages/getallpackages')
+const deletepackage=require('../controllers/KumbhPackages/deletePackage')
+const editPackage=require('../controllers/KumbhPackages/editPackage')
+const getPackageByTitle=require('../controllers/KumbhPackages/getPackageByTitle')
 
 router.post('/createabout',createAbout);
 router.get('/getabout',getAbout);
@@ -19,6 +24,12 @@ router.get('/getmetatags',getMetaTags);
 router.delete('/deletemetatag/:id',deleteAboutMeta);
 router.put('/editmetatag',editMetatag);
 router.get('/getallabout',getallAbout);
+router.post('/createpackage',createPackage)
+router.get('/getallpackage',getallpackage)
+router.delete('/deletepackage/:id',deletepackage)
+router.put('/editpackage',editPackage)
+router.get('/getpackagebytitle/:title',getPackageByTitle)
+
 
 
 

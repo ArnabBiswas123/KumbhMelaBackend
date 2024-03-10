@@ -6,7 +6,7 @@ const getAbout=async(req,res)=>{
         return res.json({success:true, data:allsections})
         
     } catch (error) {
-        console.log(err);
+        console.log(error);
         res.json({ success: false,msg:'Internal server error' });
     }
 
