@@ -1,12 +1,11 @@
-const KumbhPakage=require('../../models/KumbhPakage')
+const KumbhAccomodation=require('../../models/KumbhAccomodation')
 
-const deletepackage=async(req,res)=>{
+const deleteAccomodation=async(req,res)=>{
         try {
             if (req.params.id === undefined) {
                 return res.json({ success: false, msg: "send id" });
               }
-             
-              const deletesection = await KumbhPakage.findByIdAndDelete(req.params.id);
+              const deletesection = await KumbhAccomodation.findByIdAndDelete(req.params.id);
               if (!deletesection) {
                 return res.json({ success: false, msg: "Not valid id" });
               }
@@ -16,4 +15,4 @@ const deletepackage=async(req,res)=>{
             res.json({ success: false, msg: error.message });
         }
 }
-module.exports=deletepackage
+module.exports=deleteAccomodation

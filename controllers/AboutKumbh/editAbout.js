@@ -1,32 +1,44 @@
-const About = require("../../models/AboutKumbhModel");
-const editAbout = async (req, res) => {
-  try {
-    const { id, title, image, description } = req.body;
-    if (
-      id === undefined ||
-      title === undefined ||
-      image === undefined ||
-      description === undefined
-    ) {
-      return res.json({ success: false, msg: "Send all fields" });
-    }
-    const editSection = await About.findByIdAndUpdate(
-      id,
-      {
-        title: title,
-        image: image,
-        description: description,
-      },
-      { new: true }
-    );
-    if (!editSection) {
-      return res.json({ success: false, msg: "Not valid id" });
+const About = require("../../models/KumbhAbout");
+const editAbout=async(req,res)=>{
+    const { id,title, image, description, about, meta_title, meta_description } = req.body;
+    
+
+    if (!id) {
+        return res.json({ success: false, msg: "ID is required" });
+      }
+
+
+    let AboutToUpdate = await About.findById(id);
+
+
+
+    if (!AboutToUpdate) {
+      return res.json({ success: false, msg: "About not found" });
     }
 
-    return res.json({ success: true, data: editSection });
-  } catch (error) {
-    console.log(error);
-    res.json({ success: false, msg: 'Internal server error'});
-  }
-};
-module.exports = editAbout;
+    if (title) {
+        AboutToUpdate.title = title;
+      }
+
+    if (image) {
+      AboutToUpdate.image = image;
+    }
+    if (description) {
+      AboutToUpdate.description = description;
+    }
+    if (about) {
+        AboutToUpdate.about = about;
+    }
+    if (meta_title) {
+        AboutToUpdate.meta_title = meta_title;
+    }
+    if (meta_description) {
+        AboutToUpdate.meta_description = meta_description;
+    }
+
+  
+    const updatedAbout=await AboutToUpdate.save();
+
+    return res.json({ success: true, data: updatedAbout });
+}
+module.exports=editAbout

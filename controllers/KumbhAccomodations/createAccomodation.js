@@ -1,5 +1,5 @@
-const KumbhPakage=require('../../models/KumbhPakage')
-const createPackage = async (req, res) => {
+const KumbhAccomodation=require('../../models/KumbhAccomodation')
+const createAccomodation = async (req, res) => {
   try {
     const { title, image, description, about, meta_title, meta_description } =
       req.body;
@@ -13,11 +13,11 @@ const createPackage = async (req, res) => {
     ) {
       return res.json({ success: false, msg: "send all fields" });
     }
-    const packageExists = await KumbhPakage.findOne({ title });
-    if (packageExists) {
-      return res.json({ success: false, msg: "Package already exists" });
+    const AccomodationExists = await KumbhAccomodation.findOne({ title });
+    if (AccomodationExists) {
+      return res.json({ success: false, msg: "Accomodation already exists" });
     }
-    await KumbhPakage.create({
+    await KumbhAccomodation.create({
       title,
       image,
       description,
@@ -31,4 +31,4 @@ const createPackage = async (req, res) => {
     res.json({ success: false, msg: "Internal server error" });
   }
 };
-module.exports = createPackage;
+module.exports = createAccomodation;

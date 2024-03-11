@@ -1,35 +1,46 @@
 const express = require('express');
 const router = express.Router()
 const createAbout=require('../controllers/AboutKumbh/createAbout');
-const getAbout=require('../controllers/AboutKumbh/getAbout')
 const deleteAbout=require('../controllers/AboutKumbh/deleteAbout')
 const editAbout=require('../controllers/AboutKumbh/editAbout')
-const createMetaTag=require('../controllers/AboutKumbh/createMetaTag')
-const getMetaTags=require('../controllers/AboutKumbh/getMetaTags')
-const deleteAboutMeta=require('../controllers/AboutKumbh/deleteMetaTag')
-const editMetatag=require('../controllers/AboutKumbh/editMetatag')
 const getallAbout=require('../controllers/AboutKumbh/getallAbout')
+const getAboutByTitle = require('../controllers/AboutKumbh/getAboutByTitle');
+
 const createPackage=require('../controllers/KumbhPackages/createPackage')
 const getallpackage=require('../controllers/KumbhPackages/getallpackages')
 const deletepackage=require('../controllers/KumbhPackages/deletePackage')
 const editPackage=require('../controllers/KumbhPackages/editPackage')
 const getPackageByTitle=require('../controllers/KumbhPackages/getPackageByTitle')
+const getallFrontpagedata=require('../controllers/common/getallFrontpagedata')
+const createAccomodation=require('../controllers/KumbhAccomodations/createAccomodation')
+const deleteAccomodation=require('../controllers/KumbhAccomodations/deleteAccomodation')
+const editAccomodation=require('../controllers/KumbhAccomodations/editAccomodation')
+const getAccomodationByTitle=require('../controllers/KumbhAccomodations/getAccomodationByTitle')
+const getallAccomodations=require('../controllers/KumbhAccomodations/getallAccomodations');
+
+
+
+
 
 router.post('/createabout',createAbout);
-router.get('/getabout',getAbout);
-router.delete('/deletesection/:id',deleteAbout);
 router.put('/editabout',editAbout);
-router.post('/createmeta',createMetaTag);
-router.get('/getmetatags',getMetaTags);
-router.delete('/deletemetatag/:id',deleteAboutMeta);
-router.put('/editmetatag',editMetatag);
+router.delete('/deleteabout/:id',deleteAbout)
 router.get('/getallabout',getallAbout);
+router.get('/getaboutbytitle',getAboutByTitle)
+
+
 router.post('/createpackage',createPackage)
 router.get('/getallpackage',getallpackage)
 router.delete('/deletepackage/:id',deletepackage)
 router.put('/editpackage',editPackage)
 router.get('/getpackagebytitle/:title',getPackageByTitle)
-
+router.get('/getallfrontpagedata',getallFrontpagedata)
+router.post('/createaccomodation',createAccomodation);
+router.get('/getallaccomodation',getallAccomodations);
+router.put('/editaccomodation',editAccomodation);
+router.delete('/deleteaccomodation/:id',deleteAccomodation);
+router.get('/getaccomodationbytitle/:title',getAccomodationByTitle)
+router.delete('/deleteabout/:id',deleteAbout);
 
 
 

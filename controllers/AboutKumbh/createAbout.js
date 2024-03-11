@@ -1,26 +1,34 @@
-const About = require("../../models/AboutKumbhModel");
-
+const About = require("../../models/KumbhAbout");
 const createAbout = async (req, res) => {
   try {
-    const {title,image,description}=req.body
-    if(title===undefined||image===undefined||description===undefined){
-      return res.json({success:false, msg:'Send all fields'});
+    const { title, image, description, about, meta_title, meta_description } =
+      req.body;
+    if (
+      !title ||
+      !image ||
+      !description ||
+      !about ||
+      !meta_title ||
+      !meta_description
+    ) {
+      return res.json({ success: false, msg: "send all fields" });
     }
-    const sectionExists = await About.findOne({ title });
-    if(sectionExists){
-      return res.json({success:false, msg:'Section already exists'})
+    const packageExists = await About.findOne({ title });
+    if (packageExists) {
+      return res.json({ success: false, msg: "About already exists" });
     }
     await About.create({
       title,
       image,
-      description
+      description,
+      about,
+      meta_title,
+      meta_description,
     });
-    return res.json({success:true})
-
-
-  } catch(err) {
-        console.log(err);
-        res.json({ success: false,msg:'Internal server error' });
+    return res.json({ success: true });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, msg: "Internal server error" });
   }
 };
 module.exports = createAbout;
