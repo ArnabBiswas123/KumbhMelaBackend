@@ -2,7 +2,8 @@ const express = require("express");
 const connectDB = require("./db/connect");
 const app = express();
 const kumbhRouter=require('./routes/kumbhRouter');
-
+const adminRouter=require('./routes/adminRouter')
+const customerRouter=require('./routes/customerRouter')
 
 const port = process.env.PORT || 5000;
 
@@ -17,6 +18,8 @@ app.get("/", (req, res) => {
 });
 
 app.use('/api/v1/kumbh',kumbhRouter)
+app.use('/api/v1/user',adminRouter)
+app.use('/api/v1/customer',customerRouter)
 
 const start = async () => {
   try {
