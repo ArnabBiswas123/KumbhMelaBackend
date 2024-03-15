@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Jai Sia Ram Jai Bajrangbali");
+  res.send("The Maha Kumbh");
 });
 
 app.use('/api/v1/kumbh',kumbhRouter)
