@@ -13,6 +13,6 @@ router.get('/getallcustomer',protect,getallcustomer)
 router.delete('/deletecustomer/:id',protect,deletecustomer)
 
 router.post('/createenquiry',createenquiry);
-router.post('/deleteenquiry',protect,deleteenquiry);
+router.delete('/deleteenquiry/:id',protect,deleteenquiry);
 router.get('/getallenquiry',protect,getallenquiry);
 module.exports=router;

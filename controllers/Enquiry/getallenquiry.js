@@ -1,6 +1,6 @@
 const Enquiry=require('../../models/Enquiry')
 
-const allcustomer = async (req, res) => {
+const getallenquiry= async (req, res) => {
   try {
     const allcustomer=await Enquiry.find({});
     return res.json({success:true, customer:allcustomer});
@@ -10,4 +10,4 @@ const allcustomer = async (req, res) => {
     res.json({ success: false, msg: "Internal server error" });
   }
 };
-module.exports = allcustomer;
+module.exports = getallenquiry;

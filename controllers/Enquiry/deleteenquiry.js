@@ -1,5 +1,5 @@
 const Enquiry=require('../../models/Enquiry')
-const deletecustomer=async(req,res)=>{
+const deleteenquiry=async(req,res)=>{
     try {
         if (req.params.id === undefined) {
             return res.json({ success: false, msg: "send id" });
@@ -14,4 +14,4 @@ const deletecustomer=async(req,res)=>{
         res.json({ success: false, msg: "Internal server error" });
     }
 }
-module.exports=deletecustomer
+module.exports=deleteenquiry
